@@ -3,7 +3,7 @@ const cors = require('cors')
 
 const app = express()
 app.use(cors())
-app.get('api/get', (req, res) =>{
+app.get('/api/get', (req, res) =>{
     res.json({msg: 'Hello World'})
 })
 
