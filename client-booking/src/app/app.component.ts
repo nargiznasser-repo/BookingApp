@@ -1,4 +1,4 @@
-import { Component, Signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BookingService } from './services/booking.service';
 @Component({
@@ -9,15 +9,22 @@ import { BookingService } from './services/booking.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = '';
+  message = signal('');
+  printmessage = computed(() => `Booking says: ${this.message()}`)
 
-  constructor(private bookingService: BookingService) {}
+  constructor(private bookingService: BookingService) { 
+        effect(() => {
+      console.log('printmessage changed:', this.printmessage());
+    })
+  }
 
- ngOnInit() {
+  ngOnInit() {
     this.bookingService.getMessage().subscribe((data: any) => {
- this.title = data.msg;
-  })
- }
+      this.message.set(data.msg)
+    })
+
+
+  }
 
 
 }
