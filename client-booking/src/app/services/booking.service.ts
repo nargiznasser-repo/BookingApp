@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class BookingService {
 
-   private apiUrl = 'http://localhost:3000/api/get';
+   private apiUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) { } 
 
-  getMessage(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  getRows(): Observable<any> {
+    return this.http.get<any>(this.apiUrl+ '/getRows');
   }
    
 }

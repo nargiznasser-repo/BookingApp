@@ -1,0 +1,33 @@
+<div class="theatre">
+  <h2>Movie Theatre Seat Layout</h2>
+
+  <div class="screen">SCREEN</div>
+
+  <div class="rows">
+    <div class="row" *ngFor="let row of seats(); let i = index">
+      <div
+        class="seat"
+        *ngFor="let seat of row"
+        [class.available]="seat.status === 'available'"
+        [class.booked]="seat.status === 'booked'"
+        [class.selected]="seat.status === 'selected'"
+        (click)="toggleSeat(seat)"
+      >
+        {{seat.row}}{{ seat.number + 1 }}
+      </div>
+    </div>
+  </div>
+
+  <div class="summary">
+    <p>Selected Seats: 
+      <span *ngFor="let s of selectedSeats">
+        [{{ s.row }}{{ s.number + 1 }}]
+      </span>
+    </p>
+  </div>
+
+  <div class="actions">
+    <button (click)="bookSelectedSeats()" [disabled]="selectedSeats.length === 0">
+      Book Selected Seats
+    </button>
+</div>

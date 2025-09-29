@@ -1,0 +1,53 @@
+.theatre {
+  text-align: center;
+  margin: 20px;
+}
+
+.screen {
+  background: #ccc;
+  height: 30px;
+  margin: 10px auto;
+  width: 80%;
+  line-height: 30px;
+  font-weight: bold;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.seat {
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  line-height: 35px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+  border: 1px solid #999;
+}
+
+.available {
+  background: #fff;
+}
+
+.booked {
+  background: #666;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+.selected {
+  background: #4caf50;
+  color: #fff;
+}

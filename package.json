@@ -1,0 +1,10 @@
+{
+  "name": "booking-app",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "frontend": "cd client-booking && ng serve",
+    "backend": "cd server && node server.js",
+    "start": "concurrently \"npm run frontend\" \"npm run backend\""
+  }
+}
