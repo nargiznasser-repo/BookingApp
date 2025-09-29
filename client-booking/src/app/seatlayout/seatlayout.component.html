@@ -1,8 +1,9 @@
+ <h2> < Movie Name - Language</h2>
+   <h4> Theatre name| day, dd-mmmm-yyyy| time </h4>
+<!-- show time slots -->
+
 <div class="theatre">
-  <h2>Movie Theatre Seat Layout</h2>
-
-  <div class="screen">SCREEN</div>
-
+ 
   <div class="rows">
     <div class="row" *ngFor="let row of seats(); let i = index">
       <div
@@ -17,6 +18,8 @@
       </div>
     </div>
   </div>
+  <div class="screen">SCREEN</div>
+
 
   <div class="summary">
     <p>Selected Seats: 
@@ -30,4 +33,5 @@
     <button (click)="bookSelectedSeats()" [disabled]="selectedSeats.length === 0">
       Book Selected Seats
     </button>
+  </div>
 </div>

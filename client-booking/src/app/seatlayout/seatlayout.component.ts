@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BookingService } from '../services/booking.service';
+import { forkJoin, map, tap } from 'rxjs';
 
 
 interface Seat {
@@ -18,7 +19,7 @@ interface Seat {
 })
 export class SeatlayoutComponent {
   rows = [];
-  cols = 10; 
+  cols = 0; 
   seats = signal<Seat[][]>([]);
 
   constructor(private bookingService: BookingService) {
@@ -29,6 +30,18 @@ export class SeatlayoutComponent {
       this.rows = data.rows;
       this.generateSeats();
     })
+
+    // forkJoin({
+    //   rows : this.bookingService.getRows().pipe(
+    //     tap((data: any) => {console.log(data.rows)}),
+    //     map((data: any) => data.rows)
+    //   ),
+    //   cols : new Promise<number>((resolve) => resolve(10))
+    // }).subscribe((result)=>{
+    //   this.cols = result.cols
+    //   this.rows = result.rows
+    //   console.log(this.rows, this.cols)
+    // })
   }
 
   generateSeats() {
